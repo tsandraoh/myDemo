@@ -9,17 +9,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [
           'style-loader',
           'css-loader',
         ]
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          'file-loader',
-        ]
+        test: /\.(png|svg|jpg|gif)$/i,
+        // use: [
+        //   'file-loader',
+        // ]
+        type: 'asset/resource',
       },
       {
         test: /\.txt$/,
@@ -29,6 +30,18 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: [
           'file-loader'
+        ]
+      },
+      {
+        test: /\.(csv|tsv)$/,
+        use: [
+          'csv-loader'
+        ]
+      },
+      {
+        test: /\.xml$/,
+        use: [
+          'xml-loader'
         ]
       }
     ]
