@@ -1,19 +1,17 @@
 import _ from 'lodash';
-import './style.css';
-import Bgc from './bgc.jpg';
-import Data from './data.xml';
+import printMe from './print';
 
 function component() {
-  var element = document.createElement('div');
+  const element = document.createElement('div');
+  const btn = document.createElement('button');
+
   element.innerHTML = _.join(['sandra', 'webpack_demo'], ' ');
-  element.classList.add('sandra');
+ 
+  btn.innerHTML = 'Click me and check console';
+  btn.onclick  = printMe;
 
-  var myBgc = new Image();
-  myBgc.src = Bgc;
-  element.appendChild(myBgc);
+  element.appendChild(btn);
 
-  console.log(Data, '0000', '----------Data');
-  
   return element;
 }
 
