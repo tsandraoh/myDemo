@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="https://fastly.jsdelivr.net/npm/quarkd@latest/umd/index.js"></script>
+<body>
+  <h3>按钮类型</h3>
+  <quark-button type="primary">主要按钮</quark-button>
+  <quark-button type="success">成功按钮</quark-button>
+  <quark-button type="danger">危险按钮</quark-button>
+  <quark-button type="warning">警告按钮</quark-button>
+  <h3>朴素按钮</h3>
+  <quark-button type="primary" plain>主要按钮</quark-button>
+  <quark-button type="success" plain>成功按钮</quark-button>
+  <h3>浅色按钮</h3>
+  <quark-button type="primary" light>主要按钮</quark-button>
+  <quark-button type="success" light>成功按钮</quark-button>
+  <h3>加载状态</h3>
+  <quark-button loading type="danger" loadtype="circular">加载中...</quark-button>
+  <quark-button loading type="warning">加载中...</quark-button>
+  <!-- @click="changeLoading" -->
+  <quark-button type="success" onclick="changeLoading()">Click me!</quark-button>
+  <h3>禁用状态</h3>
+  <quark-button disabled type="primary">禁用状态</quark-button>
+  <quark-button disabled plain>禁用状态</quark-button>
+  <h3>按钮尺寸</h3>
+  <div class="btn-size">
+    <quark-button type="primary" size="small">小号尺寸</quark-button>
+    <quark-button type="primary" size="big">大号尺寸</quark-button>
+    <quark-button type="primary">普通尺寸</quark-button>
+  </div>
+</body>
+<style>
+  .btn-size>quark-button {
+      margin-bottom: 16px;
+    }
+</style>
+</html>

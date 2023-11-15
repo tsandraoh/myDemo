@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>基础算法练习</title>
+</head>
+<body>
+  <h5>1. 冒泡排序：相邻两个元素比较，最大的冒泡到最后</h5>
+  <button onclick="runBubbleSort()">点击添加函数到window对象</button>
+  <button onclick="printBubbleSortCode()">点击打印源码到控制台</button>
+  <h5>2. 滑动窗口：基于双指针思想，依据动态或固定的窗口宽度，依次滑动解决实际问题</h5>
+  <p>固定窗口：arr: number[], k: number 计算arr中长度为k的子数组的元素和的最大值</p>
+  <p>动态窗口：待办</p>
+  <button onclick="runWindowByFixedWidth()">点击添加函数到window对象</button>
+  <button onclick="printWindowByFixedWidth()">点击打印源码到控制台</button>
+</body>
+<style>
+  p{
+    font-size: 14px;
+  }
+</style>
+<script>
+  // 冒泡 ==== 
+  function onBubbleSort(arr) {
+      if (!Array.isArray(arr)) return console.log('输入数据异常');
+      for (let i = 0; i < arr.length - 1; ++i) {
+          for (let j = 0; j < arr.length - 1 - i; ++j) {
+              if (arr[j] > arr[j+1]) {
+                  let temp = arr[j+1];
+                  arr[j+1] = arr[j]
+                  arr[j] = temp;
+              }
+          }
+      }
+      console.log('升序排列结果为：')
+      return arr;
+    }
+  function runBubbleSort() {
+    console.log('已添加，请直接调用 onBubbleSort(arr: number[])')
+  }
+  function printBubbleSortCode() {
+    console.log(onBubbleSort.toString());
+  }
+
+  // 滑动窗口 ======
+  // 固定窗口
+ function onWindowByFixedWidth(arr, k) {
+      if (!Array.isArray(arr) || typeof k !== 'number') return console.log('数据异常');
+      const len = arr.length;
+      if (len < k) return console.log('数组长度不够');
+      let maxSum = 0;
+      for (let i = 0; i < k; ++i) {
+        maxSum += arr[i]
+      }
+      let tempSum = maxSum;
+      for (let j = k; j < len; ++j) {
+        tempSum += arr[j] - arr[j - k];
+        maxSum = Math.max(tempSum, maxSum)
+      }
+      console.log('k长度的子数组所有元素和最大值为：');
+      return maxSum;
+    }
+
+  function runWindowByFixedWidth() {
+    console.log('已添加，请直接调用 onWindowByFixedWidth(arr: number[], k: number)')
+  }
+
+   function printWindowByFixedWidth() {
+    console.log(onWindowByFixedWidt.toString())
+  }
+  // 动态窗口
+</script>
+</html>

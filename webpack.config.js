@@ -5,11 +5,11 @@ module.exports = {
   mode: 'development',
   entry: {
     index: './src/index.js',
-    print: './src/print.js',
+    // print: './src/print.js',
   },
   devtool: 'inline-source-map',
   devServer: {
-    static: './dist',
+    static: './src/app.html',
   },
   plugins: [
     new HtmlWebpackPlugin({

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+ 
+  <div class="wrap1">
+    <div id="draggable1" class="common box1" draggable="true"> draggable 1</div>
+    <div id="draggable2" class="common box2"> drop 2</div>
+  </div>
+
+  <div class="wrap2">
+    <div id="draggable3" class="box3" ondrop="dropImg(event)" ondragover="allowImgDrop(event)"></div>
+    <div id="draggable3" class="box3" ondrop="dropImg(event)" ondragover="allowImgDrop(event)">
+      <img id="img1" class="img" src="../imgs/WechatIMG77.jpeg" draggable="true" ondragstart="dragImg(event)">
+    </div>
+  </div>
+
+   <div class="wrap3">
+    <div id="draggable4" class="box3" ondrop="dropA(event)" ondragover="allowADrop(event)"></div>
+    <!-- <a href="https://www.google.com/" draggable="true" ondragstart="dragA(event)" id="dragA">google</a> -->
+    <a href="javaScript:;" draggable="true" ondragstart="dragA(event)" id="dragA">google</a>
+    <!-- <a onclick="onClickA()" draggable="true" ondragstart="dragA(event)" id="dragA">google</a> -->
+   
+  </div>
+ 
+</body>
+
+<style>
+  .wrap1 {
+    display: flex;
+  }
+  .common {
+    height: 100px;
+    width: 100px;
+    margin-right: 24px;
+    padding: 8px;
+    line-height: 100px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .box1 {
+    background-color: pink;
+  }
+   .box1:hover {
+     cursor: pointer;
+  }
+  .box2 {
+    background-color: olivedrab;
+  }
+  .wrap2 {
+    margin-top: 24px;
+    display: flex;
+  }
+  .box3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+    width: 200px;
+    height: 118px;
+    border: 1px solid #666;
+  }
+ 
+  .img {
+    width: 188px;
+    height: 100px;
+   
+  }
+  .img:hover {
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  /**
+   * 拖起事件
+   * 拖拽元素 自身的事件：
+   * ondragstart：当鼠标按下并且开始移动拖拽元素后，整个拖拽周期 只触发一次； 
+   * ondrag：拖拽过程中会不断触发此事件；
+   * ondragend：鼠标松开，拖拽结束，整个拖拽周期 只触发一次；
+   * */ 
+  const draggableBox1 = document.getElementById('draggable1');
+  draggableBox1.ondragstart = function (event) {
+    event.dataTransfer.setData('text', event.target.innerText);
+  }
+  // draggableBox1.ondrag = function (event) {
+  //   console.log('拖拽中');
+  // }
+  // draggableBox1.ondragend = function (event) {
+  //   console.log('拖拽结束');
+  // }
+
+/**
+ * 拖放事件
+ * 当拖拽的元素拖到一个目标元素上时 目标元素触发的事件：
+ * ondragenter：
+ * ondragover：
+ * ondragleave：
+ * ondrop：
+ * 
+*/
+  const draggableBox2 = document.getElementById('draggable2');
+  // draggableBox2.ondragenter = function (event) {
+  //   console.log('进入');
+  // }
+  draggableBox2.ondragover = function (event) {
+    event.preventDefault();
+    // console.log('停留');
+  }
+  draggableBox2.ondragleave = function (event) {
+    console.log('离开');
+  }
+  draggableBox2.ondrop = function (event) {
+    console.log('放下');
+    const value = event.dataTransfer.getData('text');
+    event.target.innerText = value;
+    event.target.classList.remove('box2');
+    event.target.classList.add('box1');
+  }
+
+
+
+  // ========== 图片拖拽 ============
+
+  function dragImg(event) {
+    event.dataTransfer.setData('text', event.target.id);
+    event.dataTransfer.setDragImage(event.target, event.target.width / 2, event.target.height / 2)
+  }
+
+  function allowImgDrop(event) {
+    event.preventDefault();
+  }
+
+  function dropImg(event) {
+    event.preventDefault();
+    const imgEleId = event.dataTransfer.getData('text');
+    event.target.appendChild(document.getElementById(imgEleId));
+  }
+
+  function dragA(event) {
+    event.dataTransfer.setData('text', event.target.innerText);
+  }
+
+  function allowADrop(event) {
+    event.preventDefault();
+  }
+  function dropA(event) {
+    const value = event.dataTransfer.getData('text');
+    event.target.innerText = value;
+  }
+  
+</script>
+
+</html>

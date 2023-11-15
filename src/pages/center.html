@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="parent">
+    <div class="border left">A</div>
+    <div class="border right">B</div>
+  </div>
+
+   <div class="box">
+        <div>1. 水平垂直居中 - 行内块</div>
+        <div>1. 子盒子设置行内块，父盒子设置text-align</div>
+        <div>2. 子盒子设置vertical-align，父盒子设置line-height</div>
+        <div class="horizontal horizontal-1">
+            <div class="child child-1"></div>
+        </div>
+    </div>
+
+     <div class="box">
+        <div>2. 水平垂直居中 - Flex</div>
+        <div>1. flex方案父盒子 alignItems&justifyContent设置center </div>
+        <div>2. 或者 父盒子 flex, 子盒子 margin设置auto</div>
+         <div class="horizontal horizontal-2">
+            <div class="child child-2"></div>
+        </div>
+    </div>
+
+     <div class="box">
+        <div>3. 水平垂直居中 - 定位</div>
+        <div>3. 子盒子设置行内块，父盒子设置text-align</div>
+         <div class="horizontal horizontal-3">
+            <div class="child child-3"></div>
+        </div>
+    </div>
+</body>
+<style>
+  .parent {
+    display: flex;
+    width: 200px;
+    height: 100px;
+    border: 1px solid pink;
+  }
+  .left {
+    width: 50px;
+  }
+  .right {
+    flex: 1;
+    /* flex-grow: flex 容器中分配剩余空间的相对比例, 剩余空间是 flex 容器的大小减去所有 flex 项的大小加起来的大小 */
+  }
+  .border {
+    border: 1px solid blue;
+    height: 18px;
+  }
+
+  .box {
+            margin-top: 24px;
+        }
+        .horizontal {
+            width: 500px;
+            height: 300px;
+            background-color: #ccc;
+        }
+        .child {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        .horizontal-1 {
+            text-align: center;
+            line-height: 300px;
+        }
+        .child-1 {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .horizontal-2 {
+            display: flex;
+            /* 第一种方案 */
+            /* justify-content: center;
+            align-items: center; */
+        }
+        .child-2 {
+            /* 第二种方案 */
+            margin: auto;
+        }
+</style>
+</html>

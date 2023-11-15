@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <button id="btn">点击发送ajax请求</button>
+  </div>
+  <div class="input-box">
+    <div>time</div>
+    <Input class="input" type="time">
+    <div>email</div>
+    <Input class="input" type="email">
+    <div>month</div>
+    <Input class="input" type="month">
+    <div>radio</div>
+    <Input class="input" type="radio">
+    <div>range</div>
+    <Input class="input" type="range">
+    <div>url</div>
+    <Input class="input" type="url">
+    <div>color</div>
+    <Input class="input" type="color">
+  </div>
+
+  <div>
+    vscode html 快捷键
+    1 $ 自增符号
+    2 ul>li*3>img[src=./imgs/$.jpg][alt={img $}]
+    3 (div#list1>ul>li*2)+(div#list1>ul>li*2) 使用括号分组标签 *生成多个标签
+  </div>
+</body>
+<script>
+  let btn = document.getElementById('btn')
+  btn.onclick = function () {
+    // 创建ajax实例化对象
+    let xhr = new XMLHttpRequest()
+    // 打开请求
+    xhr.open('get', '')
+    // 发送请求
+    xhr.send()
+  }
+</script>
+<style>
+  .input-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+  .input {
+    width: 168px;
+    margin-bottom: 8px;
+  }
+</style>
+</html>
